@@ -21,8 +21,8 @@ sfRenderWindow *create_window(unsigned int width, unsigned int height)
 int main(int ac, char **av)
 {
     sfRenderWindow *window = create_window(1920, 1080);
-    sfTexture *t_bg = sfTexture_createFromFile("res/Background_sky.png", NULL);
-    sfSprite *s_bg = sfSprite_create();
+    //sfTexture *t_bg = sfTexture_createFromFile("res/Background_sky.png", NULL);
+    //sfSprite *s_bg = sfSprite_create();
     sfEvent event;
     sfClock *clock;
     sfTime time;

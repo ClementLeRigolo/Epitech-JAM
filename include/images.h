@@ -7,8 +7,8 @@
 
 #pragma once
 
-#define bart "assets/bart.png"
-#define lisa "assets/lisa.png"
-#define homer "assets/homer.png"
-#define marge "assets/marge.png"
-#define leo "assets/leo.png"
+#define bart "assets/simpson/bart.png"
+#define lisa "assets/simpson/lisa.png"
+#define homer "assets/simpson/homer.png"
+#define marge "assets/simpson/marge.png"
+#define leo "assets/simpson/leo.png"

@@ -21,12 +21,18 @@ sfRenderWindow *create_window(unsigned int width, unsigned int height)
 int main(int ac, char **av)
 {
     sfRenderWindow *window = create_window(1920, 1080);
-    //sfTexture *t_bg = sfTexture_createFromFile("res/Background_sky.png", NULL);
-    //sfSprite *s_bg = sfSprite_create();
+
+    sfTexture *t_bg = sfTexture_createFromFile("res/bg.png", NULL);
+    sfSprite *s_bg = sfSprite_create();
+
     sfEvent event;
     sfClock *clock;
     sfTime time;
     float seconds;
+
+    sfRenderWindow_setMouseCursorVisible(window, sfFalse);
+    
+    sfSprite_setTexture(s_bg, t_bg, sfTrue);
 
     if (!window)
         return EXIT_FAILURE;
@@ -39,6 +45,10 @@ int main(int ac, char **av)
                 if (sfKeyboard_isKeyPressed(sfKeyEscape) == sfTrue)
                     sfRenderWindow_close(window);
             }
+        }
+        sfRenderWindow_drawSprite(window, s_bg, NULL);
+        
+
         sfRenderWindow_display(window);
     }
     sfRenderWindow_destroy(window);

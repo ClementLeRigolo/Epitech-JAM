@@ -28,11 +28,19 @@ char **get_file(char *pathname)
     DIR *folder;
     struct dirent *entry;
     int files;
+    int i = 0;
+    int minus = 0;
 
     folder = opendir(pathname);
-    for (int i = 0; entry = readdir(folder); i++)
-        dir[i] = strdup(entry->d_name);
+    while (entry = readdir(folder)) {
+        if (entry->d_name[0] != '.') {
+            dir[i] = strdup(entry->d_name);
+            i++;
+        } else {
+            minus++;
+        }
+    }
     closedir(folder);
-    dir[get_file_nbr(pathname)] = NULL;
+    dir[get_file_nbr(pathname) - minus] = NULL;
     return (dir);
 }

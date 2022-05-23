@@ -18,5 +18,9 @@
     #include <sys/types.h>
     #include <sys/stat.h>
     #include <fcntl.h>
+    #include <dirent.h>
+    #include <string.h>
+
+    char **get_file(char *pathname);
 
 #endif

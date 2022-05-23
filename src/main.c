@@ -30,11 +30,21 @@ int main(int ac, char **av)
 
     sfTexture **t_portraits = malloc(sizeof(sfTexture*) * 16);
     sfSprite **s_portraits = malloc(sizeof(sfSprite*) * 16);
+    int nb_file = 0;
+
+    char **port_files = get_file("assets/simpson");
+    for (int i = 0; port_files[i]; i++) {
+        if (strcmp(".", port_files[i]) != 0 && strcmp("..", port_files[i]) != 0)
+            printf("%s\n", port_files[i]);
+        nb_file++;
+    }
 
     sfEvent event;
     sfClock *clock;
     sfTime time;
     float seconds;
+
+    int rand_file;
 
     sfVector2f pos = {0, 0};
 
@@ -43,8 +53,21 @@ int main(int ac, char **av)
     t_portraits[1] = sfTexture_createFromFile(homer, NULL);
     t_portraits[2] = sfTexture_createFromFile(marge, NULL);
 
-    for (int i = 3; i < 15; i++)
+    /*for (int i = 3; i < 15; i++) {
+        rand_file = rand() % (nb_file - 2);
+        printf("%d\n", rand_file);
+        char *catted = malloc(sizeof(char) * 100);
+        catted = strcat("assets/simpson/", port_files[rand_file]);
+        write(1, "test\n", 5);
+        t_portraits[i] = sfTexture_createFromFile(catted, NULL);
+    }*/
+
+
+    //temporary textures init
+    for (int i = 3; i < 15; i++) {
         t_portraits[i] = sfTexture_createFromFile(bart, NULL);
+    }
+
 
     s_portraits[15] = NULL;
 

@@ -3,9 +3,9 @@ $owner = "Ziiibz"
 $repo = "ClementLeRigolo/Epitech-JAM"
 
 # Définissez votre token GitHub si nécessaire
-# $headers = @{
-#     Authorization = "Bearer VOTRE_TOKEN_GITHUB"
-# }
+$headers = @{
+    Authorization = "Bearer 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"
+}
 
 # Utilisez l'API GitHub pour récupérer les derniers commits
 $apiUrl = "https://api.github.com/repos/$owner/$repo/commits"

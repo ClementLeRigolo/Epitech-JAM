@@ -1,0 +1,30 @@
+# Définissez les variables $owner et $repo
+$owner = "Ziiibz"
+$repo = "ClementLeRigolo/Epitech-JAM"
+
+# Définissez votre token GitHub si nécessaire
+# $headers = @{
+#     Authorization = "Bearer VOTRE_TOKEN_GITHUB"
+# }
+
+# Utilisez l'API GitHub pour récupérer les derniers commits
+$apiUrl = "https://api.github.com/repos/$owner/$repo/commits"
+$response = Invoke-RestMethod -Uri $apiUrl -Method Get -Headers $headers
+
+# Extrayez le SHA du dernier commit
+$lastCommitSha = $response[0].sha
+
+# Récupérez les données détaillées de ce commit
+$commitDetailsUrl = "https://api.github.com/repos/$owner/$repo/commits/$lastCommitSha"
+$commitDetails = Invoke-RestMethod -Uri $commitDetailsUrl -Method Get -Headers $headers
+
+# Filtrez les données du commit pour trouver les fichiers avec le statut 'added'
+$addedFiles = $commitDetails.files | Where-Object { $_.status -eq 'added' }
+
+# Affichez les noms des fichiers ajoutés, ou un message si aucun fichier n'a été ajouté
+if ($addedFiles.Count -gt 0) {
+    Write-Host "Fichiers ajoutés dans le dernier commit :"
+    $addedFiles.filename
+} else {
+    Write-Host "Aucun fichier ajouté dans le dernier commit."
+}
